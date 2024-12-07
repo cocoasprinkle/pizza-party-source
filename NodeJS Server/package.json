@@ -1,0 +1,10 @@
+{
+  "optionalDependencies": {
+    "bufferutil": "^4.0.8"
+  },
+  "dependencies": {
+    "dgram": "^1.0.1",
+    "uuid": "^11.0.3",
+    "ws": "^8.18.0"
+  }
+}
