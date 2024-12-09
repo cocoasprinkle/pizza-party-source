@@ -33,41 +33,45 @@ switch(async_load[?"type"])
 						var ghost = noone;
 						var found = false;
 						var i = 0;
-						for (i = 0; i < instance_number(obj_ghostplayer); i++)
+						if (instance_number(obj_ghostplayer) > 0)
 						{
-							ghost = instance_find(obj_ghostplayer, i)
-							with(ghost)
+							for (i = 0; i < instance_number(obj_ghostplayer); i++)
 							{
-								if (data[?"id"] == ghostid)
+								ghost = instance_find(obj_ghostplayer, i)
+								with(ghost)
 								{
-									x = data[?"x"];
-									y = data[?"y"];
-									ispeppino = data[?"ispeppino"];
-									roomnumber = data[?"room"];
-									xscale = data[?"xscale"];
-									sprite_index = data[?"sprite_index"];
-									image_index = data[?"image_index"];
-									image_speed = data[?"image_speed"];
-									show_debug_message("Found!");
-									found = true;
-									break;
+									if (data[?"id"] == ghostid)
+									{
+										x = data[?"x"];
+										y = data[?"y"];
+										ispeppino = data[?"ispeppino"];
+										roomnumber = data[?"room"];
+										xscale = data[?"xscale"];
+										sprite_index = data[?"sprite_index"];
+										image_index = data[?"image_index"];
+										image_speed = data[?"image_speed"];
+										found = true;
+										break;
+									}
 								}
 							}
 						}
 						if (!found && i == instance_number(obj_ghostplayer))
 						{
-							show_debug_message("Making a ghost!");
-							var new_ghost = instance_create_layer(0,0,"Instances", obj_ghostplayer)
-							new_ghost.ghostid = data[?"id"];
-							new_ghost.x = data[?"x"];
-							new_ghost.y = data[?"y"];
-							new_ghost.ispeppino = data[?"ispeppino"];
-							new_ghost.roomnumber = data[?"room"];
-							new_ghost.xscale = data[?"xscale"];
-							new_ghost.sprite_index = data[?"sprite_index"];
-							new_ghost.image_index = data[?"image_index"];
-							new_ghost.image_speed = data[?"image_speed"];
-							show_debug_message("Created!");
+							var new_ghost = instance_create_layer(0,0,"Instances", obj_ghostplayer,
+							{
+								username : string(data[?"sprite_index"]),
+								ghostid : data[?"id"],
+								x : data[?"x"],
+								y : data[?"y"],
+								ispeppino : data[?"ispeppino"],
+								roomnumber : data[?"room"],
+								xscale : data[?"xscale"],
+								sprite_index : data[?"sprite_index"],
+								image_index : data[?"image_index"],
+								image_speed : data[?"image_speed"],
+							});
+							show_debug_message("Player " + new_ghost.ghostid + " has been synced!!");
 						}
 					}
 				}
