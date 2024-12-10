@@ -11,17 +11,17 @@ switch(async_load[?"type"])
 				{
 					clientid = data[?"id"]
 					show_debug_message("INITIALIZED! UUID: " + clientid);
-					var player_data = ds_map_create();
-					ds_map_add(player_data, "id", clientid);
-					ds_map_add(player_data, "x", 0.0);
-					ds_map_add(player_data, "y", 0.0);
-					ds_map_add(player_data, "ispeppino", true);
-					ds_map_add(player_data, "xscale", 1.0);
-					ds_map_add(player_data, "room", 818.0);
-					ds_map_add(player_data, "sprite_index", 2052.0);
-					ds_map_add(player_data, "image_index", 1.0);
-					ds_map_add(player_data, "image_speed", 1.0);
-					SendUDPMap(global.ip, global.port, player_data, msgtype.SET_DATA);
+					var player_init = ds_map_create();
+					ds_map_add(player_init, "id", clientid);
+					ds_map_add(player_init, "x", 0.0);
+					ds_map_add(player_init, "y", 0.0);
+					ds_map_add(player_init, "ispeppino", true);
+					ds_map_add(player_init, "xscale", 1.0);
+					ds_map_add(player_init, "room", 818.0);
+					ds_map_add(player_init, "sprite_index", 2052.0);
+					ds_map_add(player_init, "image_index", 1.0);
+					ds_map_add(player_init, "image_speed", 1.0);
+					SendUDPMap(global.ip, global.port, player_init, msgtype.SET_DATA);
 					initialized = true;
 				}
 				break;

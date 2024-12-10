@@ -1,6 +1,6 @@
 image_xscale = xscale;
 image_yscale = yscale;
-
+visible = (roomnumber == room);
 switch (ispeppino)
 {
 	case 0:

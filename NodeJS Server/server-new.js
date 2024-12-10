@@ -63,7 +63,7 @@ function get_player_data(data, rinfo)
 {
   for (i in players)
     {
-      if (players[i].id != data.id)
+      if (players[i].id != data.id && data.x != undefined)
       {
         server.send(JSON.stringify(players[i]), rinfo.port, rinfo.address);
       }
@@ -72,6 +72,7 @@ function get_player_data(data, rinfo)
 
 function update_player_data(data, rinfo)
 {
+  console.log(data);
   for (i in players)
   {
     if (players[i].id == data.id && data.x != undefined)
